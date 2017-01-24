@@ -6,7 +6,7 @@ package matrici;
 
 /**
  *
- * @author Sandro Gallo
+ * @author Pollachini Silvia
  */
 public class Matrici {
 
@@ -15,7 +15,7 @@ public class Matrici {
      */
     public static void main(String[] args) {
         
-        Matrice m = new Matrice(4, 6);
+        Matrice m = new Matrice(3, 7);
         
         m.fillRandom();
         System.out.println(m);

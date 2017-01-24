@@ -5,17 +5,22 @@
 
 package matrici;
 
+import java.io.FileWriter;
+
 /**
  *
- * @author Sandro Gallo
+ * @author Pollachini Silvia
  */
 public class Matrice {
-    
+     FileWriter file;
     int[][] theMatrix;
+    
+    
+    
     
     // costruttore uno
     public Matrice(int x, int y) {
-        // da completare
+        theMatrix = new int[x][y];
     }
     
     // costruttore due
@@ -24,24 +29,49 @@ public class Matrice {
     }
     
     public void fillRandom() {
-      for (int i = 0; i < theMatrix.length; i++) {
-        for (int j = 0; j < theMatrix[i].length; j++) {
-          theMatrix[i][j] = (int) (Math.random()*10);
+        for(int i= 0; i < theMatrix.length; i++){
+            for(int j = 0; j< theMatrix[i].length; j++){
+                theMatrix[i][j] = (int)(Math.random()*10);
+                
+            }
+       
         }
-      }
     }
 
     @Override
     public String toString() {
-        return "Matrice{" + "theMatrix=" + theMatrix + '}';
+        String ordinazione = "";
+        for(int i= 0; i < theMatrix.length; i++){
+            for(int j = 0; j< theMatrix[i].length; j++){
+                ordinazione += "\n";
+                    ordinazione = ordinazione + "["+i+"]"+"["+j+"] =" + theMatrix[i][j] + "\t";
+                }
+                
+            }
+       
+        
+        return ordinazione;
     }
 
     public void toFile( String filename ) {
-        // da completare
+        try{
+            file = new FileWriter(filename);
+            for(int i= 0; i < theMatrix.length; i++){
+                for(int j = 0; j< theMatrix[i].length; j++){
+                      file.write("["+i+"]"+"["+j+"] =" + theMatrix[i][j] + "\t");                   
+                
+                }
+                file.write("\n");
+            }
+            file.close();
+        }
+        catch(Exception ex){
+            System.out.println("Errore: " + ex.getMessage());
+        }
     }
 
     public void fromFile( String filename ) {
-        // da completare
+        
     }
     
 }
